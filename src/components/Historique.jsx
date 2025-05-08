@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Layout } from "../components/Layout";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 export const Historique = () => {
   const [studentDemandes, setStudentDemandes] = useState([]);
@@ -41,15 +40,7 @@ export const Historique = () => {
   const total = studentDemandes.length;
   const approuvees = filtered.filter((d) => d.decision === "ACCEPTEE").length;
   const verifiees = filtered.filter((d) => d.decision === "REFUSEE").length;
-  const restantes = total-(approuvees+verifiees);
-
-  const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444'];
-  const pieData = [
-    { name: 'Total', value: total },
-    { name: 'Approuvées', value: approuvees },
-    { name: 'Vérifiées', value: verifiees },
-    { name: 'Restantes', value: restantes },
-  ];
+  const restantes = total - (approuvees + verifiees);
 
   return (
     <Layout>
@@ -94,28 +85,6 @@ export const Historique = () => {
             <h3 className="text-lg font-semibold text-red-800 mb-1">Demandes restantes</h3>
             <p className="text-4xl font-bold">{restantes}</p>
           </div>
-        </div>
-
-        <div className="mt-8 bg-gray-50 p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold text-center mb-4 text-blue-800">Visualisation graphique</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={pieData}
-                cx="50%"
-                cy="50%"
-                label
-                outerRadius={100}
-                dataKey="value"
-              >
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend verticalAlign="bottom" />
-            </PieChart>
-          </ResponsiveContainer>
         </div>
 
         <div className="mt-10">
