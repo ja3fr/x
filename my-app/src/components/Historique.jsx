@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Layout } from "./Layout";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+//import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 export const Historique = () => {
   const [stats, setStats] = useState({
