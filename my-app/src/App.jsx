@@ -4,7 +4,6 @@ import { Student } from "./Student";
 import { Admin } from "./Admin";
 import { NouvelleDemande } from "./NouvelleDemande";
 import { SignUpForm } from "./components/SignUpForm";
-import { Historique } from "./components/Historique";
 import { HistoriqueEtudiant } from "./components/HistoriqueEtudiant"; // tout en haut
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/demande" element={<NouvelleDemande />} />
       <Route path="/creer-compte" element={<SignUpForm />} />
-      <Route path="/admin/historique" element={<Historique />} />
       <Route path="/etudiant/historique" element={<HistoriqueEtudiant />} />
     </Routes>
   </Router>
