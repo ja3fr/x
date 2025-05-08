@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Layout } from "./Layout";
-//import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 export const Historique = () => {
   const [stats, setStats] = useState({
@@ -33,18 +32,9 @@ export const Historique = () => {
     }
   }, [dateDebut, dateFin]);
 
-  const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444'];
-
-  const pieData = [
-    { name: 'Total', value: stats.total },
-    { name: 'Approuvées', value: stats.approuvees },
-    { name: 'Vérifiées', value: stats.verifiees },
-    { name: 'Restantes', value: stats.restantes },
-  ];
-
   return (
     <Layout>
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl ml-2  mx-auto">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl ml-2 mx-auto">
         <h2 className="text-2xl font-bold text-blue-800 text-center mb-6">Statistiques des Demandes</h2>
 
         <div className="flex justify-between gap-4 mb-6">
@@ -85,28 +75,6 @@ export const Historique = () => {
             <h3 className="text-lg font-semibold text-red-800 mb-1">Demandes restantes</h3>
             <p className="text-4xl font-bold">{stats.restantes}</p>
           </div>
-        </div>
-
-        <div className="mt-8 bg-gray-50 p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold text-center mb-4 text-blue-800">Visualisation graphique</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={pieData}
-                cx="50%"
-                cy="50%"
-                label
-                outerRadius={100}
-                dataKey="value"
-              >
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend verticalAlign="bottom" />
-            </PieChart>
-          </ResponsiveContainer>
         </div>
       </div>
     </Layout>
